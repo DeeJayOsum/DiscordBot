@@ -61,4 +61,4 @@ async def reminder():
 client.loop.create_task(reminder())
 
 
-client.run("NzU2MzczOTI3NTE2ODMxNzg0.X2Q6HQ.g3nibFiOnOaspaC7TH96O9xL0Xw")
+client.run("Enter Bot Token here:")
