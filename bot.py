@@ -7,13 +7,14 @@ import json
 import requests
 from discord.ext import commands
 
+
+client= commands.Bot(command_prefix ='.')
+
 def get_quote():
   response= requests.get("https://zenquotes.io/api/random")
   json_data = json.loads(response.text)
   quote=json_data[0]['q']+"  -"
   return(quote)
-
-client= commands.Bot(command_prefix ='.')
 
 @client.command()
 async def ping(ctx):
