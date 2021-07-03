@@ -3,7 +3,15 @@ import asyncio
 import os
 import random
 import datetime
+import json
+import requests
 from discord.ext import commands
+
+def get_quote():
+  response= requests.get("https://zenquotes.io/api/random")
+  json_data = json.loads(response.text)
+  quote=json_data[0]['q']+"  -"
+  return(quote)
 
 client= commands.Bot(command_prefix ='.')
 
@@ -35,6 +43,9 @@ async def on_message(message):
         if keyword.lower() in message.content.lower():
             response = f"Thanne Kandpidi"
             await channel.send(response)
+    if message.content.startswith('$inspire'):
+        quote = get_quote()
+        await message.channel.send(quote)
 
         
 
@@ -61,4 +72,4 @@ async def reminder():
 client.loop.create_task(reminder())
 
 
-client.run("Enter Bot Token here:")
+client.run(os.environ['token'])
