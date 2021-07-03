@@ -39,10 +39,9 @@ async def on_message(message):
         if keyword.lower() in message.content.lower():
             response = f"Kochu kallan"
             await channel.send(response)
-    for keyword in abc:
-        if keyword.lower() in message.content.lower():
-            response = f"Thanne Kandpidi"
-            await channel.send(response)
+    if message.content.startswith("hello"):
+      msg= 'hello {0.author.mention}'.format(message)
+      await message.channel.send(msg)
     if message.content.startswith('$inspire'):
         quote = get_quote()
         await message.channel.send(quote)
